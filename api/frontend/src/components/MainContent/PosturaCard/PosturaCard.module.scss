@@ -1,0 +1,78 @@
+@import "../../../styles/_variables";
+@import "../../../styles/_mixins";
+
+.posturaCard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: $background-color-light;
+  padding: $spacing-md;
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-0.15rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+
+  img {
+    width: 100%;
+    max-width: 10rem;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0.5rem;
+  }
+
+  div {
+    flex: 1;
+    margin-left: $spacing-md;
+    text-align: left;
+
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: $text-light;
+    }
+  }
+}
+
+.reverse {
+  flex-direction: row-reverse;
+
+  div {
+    margin-left: 0;
+    margin-right: $spacing-md;
+    text-align: right;
+  }
+}
+
+@media (max-width: 768px) {
+  .posturaCard,
+  .reverse {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    img {
+      margin-bottom: $spacing-sm;
+    }
+
+    div {
+      margin: 0;
+
+      h3 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

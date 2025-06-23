@@ -1,0 +1,235 @@
+@import "../styles/variables";
+
+// ✨ Fade In (Elegant Entrance)
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.625rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn $transition-medium ease-out;
+}
+
+// 🚀 Button Hover (Satisfying Scale)
+@keyframes buttonHover {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.button-hover:hover {
+  animation: buttonHover $transition-fast ease-in-out forwards;
+}
+
+// 🌊 Floating Effect (Subtle Floating Animation)
+@keyframes floating {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-0.2rem); }
+  100% { transform: translateY(0); }
+}
+
+.floating {
+  animation: floating 3s infinite ease-in-out;
+}
+
+// ⚡ Smooth Opacity Transition
+@keyframes fadeOpacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.fade-opacity {
+  animation: fadeOpacity $transition-medium ease-in;
+}
+
+// 🌀 Rotation (Loading Spinners or Decorative Effects)
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotate {
+  animation: rotate 1.5s linear infinite;
+}
+
+// 🔥 Glowing Text Effect (Cyberpunk Vibes)
+@keyframes glow {
+  0% { text-shadow: 0 0 0.3125rem $primary-color, 0 0 0.625rem $primary-color; }
+  100% { text-shadow: 0 0 0.625rem $primary-color, 0 0 1.25rem $primary-color; }
+}
+
+.glow {
+  animation: glow 1s infinite alternate ease-in-out;
+}
+
+// 🚀 Slide In (Use for Modals, Cards, etc.)
+@keyframes slideIn {
+  from {
+    transform: translateY(1.25rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn $transition-medium ease-out;
+}
+
+// 🚀 Slide In from Left
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-3.125rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft $transition-medium ease-out;
+}
+
+// 🎭 Shake Animation (For Errors, Warnings, or Attention-Grabbing)
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-0.3125rem); }
+  50% { transform: translateX(0.3125rem); }
+  75% { transform: translateX(-0.3125rem); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+// 🎬 Pulse Effect (For Buttons or Call-to-Actions)
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+// 🎇 Blur In (Smooth Blur Reveal Effect)
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: $blur-heavy;
+  }
+  to {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+.blur-in {
+  animation: blurIn $transition-medium ease-out;
+}
+
+// 🌟 Expand (For Pop-ups or Cards Hover Effects)
+@keyframes expand {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.expand {
+  animation: expand $transition-medium ease-out;
+}
+
+// ⚡ Text Typing Effect (Retro Terminal Look)
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(40) forwards;
+}
+
+// 🌟 Advanced Glow Animation (Cyberpunk Flicker)
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 0.3125rem $primary-color, 0 0 0.625rem $primary-color; }
+  50% { text-shadow: 0 0 0.9375rem $primary-color, 0 0 1.875rem $accent-color; }
+  100% { text-shadow: 0 0 0.3125rem $primary-color, 0 0 0.625rem $primary-color; }
+}
+
+.glow-pulse {
+  animation: glowPulse 2s infinite alternate ease-in-out;
+}
+
+// 🔥 Neon Flicker Effect (Like a Neon Sign)
+@keyframes neonFlicker {
+  0% { text-shadow: 0 0 0.3125rem $primary-color, 0 0 0.625rem $primary-color; opacity: 1; }
+  25% { text-shadow: 0 0 0.4375rem $primary-color, 0 0 0.875rem $primary-color; opacity: 0.8; }
+  50% { text-shadow: 0 0 0.625rem $primary-color, 0 0 1.25rem $primary-color; opacity: 1; }
+  75% { text-shadow: 0 0 0.375rem $primary-color, 0 0 0.75rem $primary-color; opacity: 0.9; }
+  100% { text-shadow: 0 0 0.3125rem $primary-color, 0 0 0.625rem $primary-color; opacity: 1; }
+}
+
+.neon-flicker {
+  animation: neonFlicker 1.5s infinite alternate ease-in-out;
+}
+
+// 🌊 Soft Wave Text Effect (For a Subtle Floating Text Effect)
+@keyframes waveText {
+  0% { transform: translateY(0rem); }
+  50% { transform: translateY(-0.1875rem); }
+  100% { transform: translateY(0rem); }
+}
+
+.wave-text {
+  animation: waveText 3s infinite ease-in-out;
+}
+
+// 🎭 RGB Shimmer Effect (Alternating Colors Like RGB Keyboards)
+@keyframes rgbShimmer {
+  0% { color: #ff6b6b; }
+  25% { color: #ffcc33; }
+  50% { color: #4ecdc4; }
+  75% { color: #ff66d6; }
+  100% { color: #ff6b6b; }
+}
+
+.rgb-shimmer {
+  animation: rgbShimmer 4s infinite alternate ease-in-out;
+}
+
+// 🌟 Starlight Sparkle Effect (For Magical Sparkling Text)
+@keyframes starlight {
+  0% { text-shadow: 0 0 0.3125rem $accent-color, 0 0 0.625rem $accent-color; opacity: 1; }
+  50% { text-shadow: 0 0 0.9375rem $accent-color, 0 0 1.5625rem $accent-color; opacity: 0.8; }
+  100% { text-shadow: 0 0 0.3125rem $accent-color, 0 0 0.625rem $accent-color; opacity: 1; }
+}
+
+.starlight {
+  animation: starlight 3s infinite alternate ease-in-out;
+}

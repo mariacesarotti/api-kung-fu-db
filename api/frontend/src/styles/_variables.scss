@@ -1,0 +1,66 @@
+// 🌈 Colors – Elegant and Modern
+$primary-color: #80809f;
+$secondary-color: #7d3232;
+$accent-color: #fff8cb;
+$text-color: #f5f5f5;
+$text-light: rgba(255, 255, 255, 0.8);
+$text-muted: rgba(255, 255, 255, 0.5);
+$background-color: #121212;
+$background-color-light: #1e1e1e;
+$background-color-lighter: #2a2a2a;
+$background-color-lightest: #383838;
+$background-color-dark: #0c0c0c;
+$background-color-darker: #000000;
+$card-bg: rgba(255, 255, 255, 0.05);
+$border-color: rgba(255, 255, 255, 0.1);
+
+// 🌟 Shadows for Depth
+$shadow-light: 0px 4px 6px rgba(255, 255, 255, 0.1);
+$shadow-medium: 0px 6px 10px rgba(255, 255, 255, 0.15);
+$shadow-heavy: 0px 10px 20px rgba(255, 255, 255, 0.2);
+
+// 📏 Spacing (Consistency in Layout)
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// 🎨 Borders and Radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 16px;
+$border-radius-full: 50%;
+
+// 🔢 Font Sizes – A Perfectly Balanced Scalea
+$font-xs: 12px;
+$font-sm: 14px;
+$font-md: 16px;
+$font-lg: 20px;
+$font-xl: 24px;
+$font-xxl: 32px;
+$font-xxxl: 40px;
+
+// 📱 Responsive Breakpoints – Smooth Design
+$breakpoint-xs: 480px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1280px;
+$breakpoint-xl: 1440px;
+
+// 🎛 Opacity Levels
+$opacity-light: 0.1;
+$opacity-medium: 0.3;
+$opacity-heavy: 0.6;
+$opacity-full: 1;
+
+// 🕶 Blur Effects (For Glassmorphism)
+$blur-light: blur(5px);
+$blur-medium: blur(10px);
+$blur-heavy: blur(20px);
+
+// ⚡ Transition Defaults – Smooth AF
+$transition-fast: 0.2s ease-in-out;
+$transition-medium: 0.4s ease-in-out;
+$transition-slow: 0.6s ease-in-out;

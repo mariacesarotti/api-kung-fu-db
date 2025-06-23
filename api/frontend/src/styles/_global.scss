@@ -1,0 +1,37 @@
+@import "variables";
+@import "typography";
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+p{
+  color: $text-color;
+  font-family: $serif;
+}
+h1{
+  font-weight: 800;
+  color: $text-color;
+  font-family: $sans-serif;
+}
+h2{
+  font-weight: 700;
+  color: $text-color;
+  font-family: $sans-serif;
+}
+
+h3{
+  font-weight: 600;
+  color: $text-color;
+  font-family: $sans-serif;
+}

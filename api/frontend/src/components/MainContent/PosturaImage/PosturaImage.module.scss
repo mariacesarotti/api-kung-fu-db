@@ -1,0 +1,36 @@
+.posturaiImagem {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.posturaImg {
+  cursor: pointer;
+  width: 100%;
+  // max-width: 20rem;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .posturaImg {
+    max-width: 15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .posturaImg {
+    max-width: 12rem;
+  }
+}

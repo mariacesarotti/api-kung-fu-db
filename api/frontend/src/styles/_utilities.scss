@@ -1,0 +1,45 @@
+// 📌 Margin & Padding Utilities
+.m-0 { margin: 0 !important; }
+.mt-1 { margin-top: $spacing-xs !important; }
+.mt-2 { margin-top: $spacing-sm !important; }
+.mt-3 { margin-top: $spacing-md !important; }
+.mt-4 { margin-top: $spacing-lg !important; }
+.mt-5 { margin-top: $spacing-xl !important; }
+
+.p-0 { padding: 0 !important; }
+.pt-1 { padding-top: $spacing-xs !important; }
+.pt-2 { padding-top: $spacing-sm !important; }
+.pt-3 { padding-top: $spacing-md !important; }
+.pt-4 { padding-top: $spacing-lg !important; }
+.pt-5 { padding-top: $spacing-xl !important; }
+
+// 🎛 Opacity Utilities
+.opacity-10 { opacity: $opacity-light; }
+.opacity-30 { opacity: $opacity-medium; }
+.opacity-60 { opacity: $opacity-heavy; }
+.opacity-100 { opacity: $opacity-full; }
+
+// 🔥 Flexbox Utilities
+.flex { display: flex; }
+.flex-center { display: flex; justify-content: center; align-items: center; }
+.flex-column { display: flex; flex-direction: column; }
+
+// 🔄 Grid Utilities
+.grid { display: grid; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+// ✨ Text Utilities
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+// 🎨 Glassmorphism Effect (Beautiful UI)
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: $blur-medium;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-light;
+  padding: $spacing-md;
+}
