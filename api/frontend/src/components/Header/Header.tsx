@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import styles from "./Header.module.scss";
 import Nav from "../Nav/Nav";
-import kinlayLogo from "../imgs/reexport/kinlay.png";
+import kinlayLogo from "../imgs/kinlay.webp";
 
 const Header = () => {
   return (

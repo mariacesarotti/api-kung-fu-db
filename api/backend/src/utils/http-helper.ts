@@ -1,33 +1,16 @@
 import type { HttpResponse } from "../models/http-response-model";
 
-export const ok = async (data: any): Promise<HttpResponse> => {
-  return {
-    statusCode: 200,
-    body: data,
-  };
-};
+export const ok = (data: any): HttpResponse => ({ statusCode: 200, body: data });
 
-export const noContent = async (): Promise<HttpResponse> => {
-  return {
-    statusCode: 204,
-    body: null,
-  };
-};
+export const created = (data: any): HttpResponse => ({ statusCode: 201, body: data });
 
-export const badRequest = async (): Promise<HttpResponse> => {
-  return {
-    statusCode: 400,
-    body: null,
-  };
-};
+export const noContent = (): HttpResponse => ({ statusCode: 204, body: null });
 
-export const created = async () => {
-  return {
-    statusCode: 201,
-    body: "Created!",
-  };
-};
+export const badRequest = (): HttpResponse => ({ statusCode: 400, body: null });
 
-export function serverError(error: unknown) {
-  throw new Error("Function not implemented.");
-}
+export const notFound = (): HttpResponse => ({ statusCode: 404, body: null });
+
+export const serverError = (error: unknown): HttpResponse => {
+  console.error(error);
+  return { statusCode: 500, body: null };
+};

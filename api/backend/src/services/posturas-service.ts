@@ -1,81 +1,57 @@
-import type { PosturaModel } from "../models/posturas-model";
+import type { PosturaFilter, PosturaModel } from "../models/posturas-model";
 import * as PosturaRepository from "../repositories/posturas-repository";
 import * as HttpResponse from "../utils/http-helper";
-import fs from 'fs';
-import path from 'path';
 
-export const getPosturaService = async () => {
-  const data = await PosturaRepository.getPosturas();
+const fields = [
+  "nome",
+  "faixa",
+  "kati",
+  "nomekatiportugues",
+  "descricao",
+  "imagem",
+  "gif",
+] as const;
+const requiredFields = fields.filter((field) => field !== "gif");
 
-  let response = null;
-  if (data) {
-    response = await HttpResponse.ok(data);
-  } else {
-    response = await HttpResponse.noContent();
-  }
-  return response;
+// keeps only the known string fields, so the client cannot set id or junk keys
+const pickFields = (body: any): Partial<Omit<PosturaModel, "id">> =>
+  Object.fromEntries(
+    fields
+      .filter((field) => typeof body?.[field] === "string")
+      .map((field) => [field, body[field]])
+  );
+
+export const getPosturaService = async (filter: PosturaFilter) => {
+  const data = await PosturaRepository.getPosturas(filter);
+  return HttpResponse.ok(data);
 };
 
 export const getPosturaByIdService = async (id: number) => {
   const data = await PosturaRepository.findPosturaById(id);
-
-  let response = null;
-  if (data) {
-    response = await HttpResponse.ok(data);
-  } else {
-    response = await HttpResponse.noContent();
-  }
-  return response;
+  return data ? HttpResponse.ok(data) : HttpResponse.notFound();
 };
 
-export const createPosturaService = async (postura: PosturaModel) => {
-  let response = null;
-  if (Object.keys(postura).length > 0) {
-    await PosturaRepository.insertPostura(postura);
-    response = await HttpResponse.created();
-  } else {
-    response = await HttpResponse.badRequest();
+export const createPosturaService = async (body: unknown) => {
+  const postura = pickFields(body);
+  if (requiredFields.some((field) => !postura[field])) {
+    return HttpResponse.badRequest();
   }
-  return response;
+  const data = await PosturaRepository.insertPostura(
+    postura as Omit<PosturaModel, "id">
+  );
+  return HttpResponse.created(data);
 };
 
 export const deletePosturaByIdService = async (id: number) => {
-  const data = await PosturaRepository.findPosturaById(id);
-
-  let response = null;
-
-  if (data) {
-    await PosturaRepository.deletePosturaById(id);
-    response = "deletado!";
-  } else {
-    response = await HttpResponse.noContent();
-  }
-
-  return response;
+  const deleted = await PosturaRepository.deletePosturaById(id);
+  return deleted ? HttpResponse.noContent() : HttpResponse.notFound();
 };
 
-export const updatePosturasByIdService = async (
-  id: number,
-  bodyValues: Partial<PosturaModel>
-) => {
+export const updatePosturasByIdService = async (id: number, body: unknown) => {
+  const bodyValues = pickFields(body);
+  if (Object.keys(bodyValues).length === 0) {
+    return HttpResponse.badRequest();
+  }
   const data = await PosturaRepository.updatePosturaById(id, bodyValues);
-  let response = null;
-  if (data) {
-    response = await HttpResponse.ok(data);
-  } else {
-    response = await HttpResponse.noContent();
-  }
-  return response;
+  return data ? HttpResponse.ok(data) : HttpResponse.notFound();
 };
-
-export const getFullKatiService = async (kati: string) => {      
-  const data = await PosturaRepository.getFullKati(kati);
-
-  let response = null;
-  if (data) {
-    response = await HttpResponse.ok(data);
-  } else {
-    response = await HttpResponse.noContent();
-  }
-  return response;
-}

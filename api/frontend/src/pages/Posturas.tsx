@@ -15,11 +15,15 @@ const Posturas = () => {
   const [selectedFaixa, setSelectedFaixa] = useState<string | null>(null);
   const [selectedPostura, setSelectedPostura] = useState<PosturaModel | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
+  const [status, setStatus] = useState<"loading" | "error" | "ok">("loading");
 
   useEffect(() => {
-    getPosturas().then((data) => {
-      setPosturas(data);
-    });
+    getPosturas()
+      .then((data) => {
+        setPosturas(data);
+        setStatus("ok");
+      })
+      .catch(() => setStatus("error"));
   }, []);
 
   const faixas = Array.from(new Set(posturas.map((postura) => postura.faixa)));
@@ -50,7 +54,13 @@ const Posturas = () => {
           ) : (
             <>
               <h1>catálogo interativo de posturas</h1>
-              <p>visualize as posições de cada kati organizadas por faixa</p>
+              <p role="status">
+                {status === "loading" && "carregando posturas..."}
+                {status === "error" &&
+                  "não foi possível carregar as posturas, tente novamente mais tarde"}
+                {status === "ok" &&
+                  "visualize as posições de cada kati organizadas por faixa"}
+              </p>
             </>
           )}
         </div>
@@ -60,6 +70,7 @@ const Posturas = () => {
             value={selectedFaixa || ""}
             onChange={(e) => {
               setSelectedFaixa(e.target.value);
+              setSelectedPostura(null);
               setCurrentPage(0);
             }}
           >
@@ -102,7 +113,15 @@ const Posturas = () => {
               .map((postura, index) => (
                 <div
                   key={postura.id}
+                  role="button"
+                  tabIndex={0}
                   onClick={() => setSelectedPostura(postura)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelectedPostura(postura);
+                    }
+                  }}
                 >
                   <PosturaCard
                     postura={postura}
@@ -116,6 +135,7 @@ const Posturas = () => {
               nextLabel={">"}
               breakLabel={"..."}
               pageCount={totalPages}
+              forcePage={currentPage}
               marginPagesDisplayed={2}
               pageRangeDisplayed={3}
               onPageChange={handlePageClick}

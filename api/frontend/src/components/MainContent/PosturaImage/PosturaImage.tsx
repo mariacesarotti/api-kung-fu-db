@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import styles from "./PosturaImage.module.scss";
 
 interface PosturaImageProps {
@@ -9,11 +8,23 @@ interface PosturaImageProps {
 }
 
 const PosturaImage = ({ imagem, gif, autoplay = false }: PosturaImageProps) => {
+  const showGif = autoplay && !!gif;
+  // shown while the real file of this postura has not been added to public/assets yet
+  const placeholder = `${process.env.PUBLIC_URL}/assets/${
+    showGif ? "gifs" : "images"
+  }/placeholder.webp`;
+
   return (
     <img
-      src={autoplay ? process.env.PUBLIC_URL + gif : process.env.PUBLIC_URL + imagem}
+      src={process.env.PUBLIC_URL + (showGif ? gif : imagem)}
       alt="Postura"
-      className={classNames(styles.posturaImg, { [styles.gif]: autoplay })}
+      loading="lazy"
+      onError={(e) => {
+        if (!e.currentTarget.src.endsWith(placeholder)) {
+          e.currentTarget.src = placeholder;
+        }
+      }}
+      className={`${styles.posturaImg} ${autoplay ? styles.gif : ""}`}
     />
   );
 };
