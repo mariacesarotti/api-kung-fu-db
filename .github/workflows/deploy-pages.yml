@@ -1,0 +1,51 @@
+name: Deploy frontend to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # project pages are served from /<repo-name>/
+      PUBLIC_URL: /${{ github.event.repository.name }}
+      # Pages cannot run the API, so the site reads a static copy of the data
+      REACT_APP_POSTURAS_URL: /${{ github.event.repository.name }}/posturas.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: api/frontend/package-lock.json
+      - run: cp api/backend/data/posturas.json api/frontend/public/posturas.json
+      - run: npm ci
+        working-directory: api/frontend
+      - run: npm run build
+        working-directory: api/frontend
+      # lets /video/:faixa and other client-side routes survive a page reload
+      - run: cp api/frontend/build/index.html api/frontend/build/404.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: api/frontend/build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

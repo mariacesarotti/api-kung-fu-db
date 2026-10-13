@@ -3,8 +3,11 @@ import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3333/api";
 
+// on GitHub Pages there is no API: the deploy build points this at a static copy of posturas.json
+const POSTURAS_URL = process.env.REACT_APP_POSTURAS_URL || `${API_URL}/posturas`;
+
 export const getPosturas = async (): Promise<PosturaModel[]> => {
-  const response = await axios.get(`${API_URL}/posturas`);
+  const response = await axios.get(POSTURAS_URL);
   return response.data;
 };
 

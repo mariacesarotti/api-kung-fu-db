@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Video from "./components/MainContent/Video/Video";
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Header />
       <Routes>
         <Route path="/" element={<Posturas />} />
